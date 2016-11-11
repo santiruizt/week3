@@ -1,0 +1,44 @@
+#header-image{
+	background-image: url('image.gif');
+	background-repeat: no-repeat;
+}
+
+@media only screen and  ( max-width: 1080px ) and ( min-width: 768px){
+	body:after {
+		content: "1080 and up"
+	}
+}
+
+@media only screen and  ( max-width: 768px ) and ( min-width: 420px){
+	body:after {
+		content: "768 and up"
+	}
+}
+
+@media only screen and  ( max-width: 420px ) and ( min-width: 360px){
+	body:after {
+		content: "420 and up"
+	}
+}
+
+@media only screen and  ( max-width: 1080px ) and ( min-width: 768px){
+	.row {
+		margin-left: -5%;
+	}
+
+	[class*="span"] {
+		display: inline;
+		float: left;
+		marker-left: 3%;
+	}
+	.span-one-third {
+		width: 30%;
+	}
+
+
+
+
+
+
+
+

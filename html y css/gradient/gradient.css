@@ -1,0 +1,10 @@
+body {
+	width: 100%;
+	background: #466368;
+	background: url(http://i.dailymail.co.uk/i/pix/2014/05/13/article-2626771-1DC9B09C00000578-886_634x711.jpg) repeat-y;
+	height: 1300px;
+	background-position: 50% -100%;
+	background:linear-gradient(to right, #648880, #831928, #293f50);
+	position: relative;
+
+}

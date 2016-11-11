@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://s.codepen.io/boomerang/71c95b44e81aebd0ada7ebff38356a1a1478592982749/index.html -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./console_runner-5710c30fb566082d9fcb6e7d97ee7e3f2a326128c9f334a4231b6fd752b29965.js"></script><script src="./events_runner-d5e4bf42585b8da8c18f7d963dbfc17cd66a79aa586c9448c4de8d6952ee9d97.js"></script><script src="./css_live_reload_init-25d1423d5d6fb975e7d61832d2c061422a94963ca446583b965dfc5569147311.js"></script><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"><link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/andresouza/pen/KxLEv">
+
+
+<style class="cp-pen-styles">body {
+  background: #f6f6f6;
+}
+
+.body {
+  position: relative;
+  width: 170px;
+  margin: 100px auto 0 auto;
+}
+
+.head {
+  position: relative;
+  z-index: 1;
+  height: 350px;
+  border: 5px solid #000;
+  background: #fed61e;
+  border-radius: 80px;
+  box-shadow: inset -5px -5px 0 2px rgba(0,0,0,0.2),
+    inset 5px 5px 0 2px rgba(255,250,196,0.3);
+}
+
+.hair, .hair > div {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 0;
+  width: 60px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+.hair > div {
+  margin-top: 17px;
+}
+
+.eyebrows {
+  position: absolute;
+  top: 112px;
+  left: -10px;
+  right: -10px;
+  z-index: 1;
+}
+.eyebrow {
+  position: relative;
+  z-index: 2;
+  float: left;
+  height: 36px;
+  width: 40px;
+  background: #fed61e;
+  border-left: 2px solid #000;
+  border-radius: 50%;
+  box-shadow: inset 5px 5px 0 2px rgba(255,250,196,0.3);
+}
+.eyebrow:last-child {
+  float: right;
+  border-left: 0;
+  border-right: 2px solid #000;
+  box-shadow: inset -5px -5px 0 2px rgba(0,0,0,0.2);
+}
+
+.eyes {
+  position: absolute;
+  top: 115px;
+  left: -10px;
+  right: -10px;
+}
+.eye {
+  position: relative;
+  z-index: 2;
+  float: left;
+  height: 80px;
+  width: 80px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+.eye:last-child {
+  float: right;
+  box-shadow: inset -5px -5px 0 2px rgba(0,0,0,0.05);
+}
+
+.iris {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 2px;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px auto 0 auto;
+  border-radius: 50%;
+  background: #000;
+}
+
+.ears {
+  position: absolute;
+  top: 170px;
+  left: -15px;
+  right: -15px;
+}
+.ear {
+  position: relative;
+  z-index: 0;
+  float: left;
+  height: 40px;
+  width: 40px;
+  background: #fed61e;
+  border: 5px solid #000;
+  border-radius: 50%;
+}
+.ear:last-child {
+  background: #ebce44;
+  float: right;
+  box-shadow: inset -5px -5px 0 2px rgba(0,0,0,0.05);
+}
+
+.nose {
+  position: absolute;
+  z-index: 3;
+  top: 175px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 38px;
+  width: 46px;
+  background: #fed61e;
+  border: 2px solid #000;
+  border-top: none;
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 0 2px rgba(0,0,0,0.2),
+    1px 3px 0 2px rgba(0,0,0,0.1);
+}
+
+.beard {
+  position: absolute;
+  z-index: 2;
+  top: 200px;
+  left: -15px;
+  right: -10px;
+  height: 140px;
+  width: 180px;
+  background: #d3a64b;
+  border: 2px solid #000;
+  border-width: 2px 5px;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 0 2px rgba(0,0,0,0.2),
+    inset 5px 5px 0 2px rgba(255,250,196,0.1);
+}
+
+.mouth {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  left: 0;
+  right: 0;
+  height: 55px;
+  width: 130px;
+  margin: 0 auto;
+  border-bottom: 5px solid #000;
+  border-radius: 80%;
+}
+.mouth:before, .mouth:after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 3;
+  top: 30px;
+  left: -3px;
+  height: 20px;
+  width: 20px;
+  border-left: 3px solid #000;
+  border-radius: 40%;
+  -webkit-transform: rotate(45deg);
+}
+.mouth:after {
+  left: auto;
+  right: -3px;
+  border-left: none;
+  border-right: 3px solid #000;
+  -webkit-transform: rotate(-45deg);
+}
+
+.chin {
+  position: absolute;
+  z-index: 2;
+  top: 105px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  width: 30px;
+  margin: 0 auto;
+  border-bottom: 2px solid #000;
+  border-radius: 80%;
+}</style></head><body>
+<div id="homer">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrows">
+          <div class="eyebrow"></div>
+          <div class="eyebrow"></div>
+        </div>
+        <div class="eyes">
+          <div class="eye"><div class="iris"></div></div>
+          <div class="eye"><div class="iris"></div></div>
+        </div>
+        <div class="nose"></div>
+        <div class="beard">
+          <div class="mouth"></div>
+          <div class="chin"></div>
+        </div>
+      </div>
+      <div class="ears">
+        <div class="ear"></div>
+        <div class="ear"></div>
+      </div>
+      <div class="hair"><div></div></div>
+    </div>
+  </div>
+
+</body></html>
