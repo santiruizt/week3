@@ -1,7 +1,7 @@
 
 var viking = require("./viking.js");
 
-var vikings = [new viking("Harald", 500, 70), new viking("Gunnvor", 475, 60)]
+var vikings = [new viking("Harald", 300, 80), new viking("Gunnvor", 250, 85)]
 
 //var manolete = new viking("Harald", 500, 70);
 //var santi = new viking("Gunnvor", 475, 60);
@@ -28,45 +28,57 @@ var vikings = [new viking("Harald", 500, 70), new viking("Gunnvor", 475, 60)]
 //osgor.fight();
 
 var saxon = function() {
-	this.health = (Math.floor(Math.random() * 80) + 100);
-	this.strength = (Math.floor(Math.random() * 10) + 15);
+	this.health = (Math.floor(Math.random() * (100 - 80) + 80));
+	this.strength = (Math.floor(Math.random() * (15 - 10) + 10));
 
 }
 
 var saxon1 = new saxon();
 var saxon2 = new saxon();
-var saxons = [saxon1, saxon2];
+var saxon3 = new saxon();
+var saxon4 = new saxon();
+var saxon5 = new saxon();
+var saxon6 = new saxon();
+var saxon7 = new saxon();
+var saxon8 = new saxon();
+var saxon9 = new saxon();
+var my_saxons = [saxon1, saxon2, saxon3, saxon4, saxon5, saxon6, saxon7, saxon8, saxon9];
 
-var town = function(vikings, saxons, turns) {
+var town = function(vikings, saxons) {
 	this.vikings = vikings;
-	this.saxons = saxons;
-	this.turns = Math.floor(Math.random() * (8 - 5 + 1) + 5);
+	this.saxons = my_saxons;
+	this.turns = Math.floor(Math.random() * (8-5) + 5);
 
-	var totalVikings = this.vikings.length;
-	var totalSaxons  = this.saxons.length;
 
 	this.assault = function() {
-		while (totalVikings > 0 && totalSaxons >0 && this.turns>=5 && this.turns<=8) {
-			var rdmViking = this.vikings[Math.floor(Math.random()*totalVikings)];
-			var rdmSaxon  = this.saxons[Math.floor(Math.random()*totalSaxons)];
+		i = 1
+		while (this.vikings.length > 0 && this.saxons.length > 0 && i<= this.turns) {
+			var rdmViking = this.vikings[Math.floor(Math.random()*(this.vikings.length -1))];
+			var rdmSaxon  = this.saxons[Math.floor(Math.random()*(this.saxons.length -1))];
 			console.log(this.turns);
+			console.log(rdmSaxon);
 			rdmSaxon.health -= rdmViking.strength;
 			rdmViking.health -= rdmSaxon.strength;
 			console.log("Saxons's health: " + rdmSaxon.health);
 			console.log(rdmViking.name + "'s health: " + rdmViking.health);
 
 			if (rdmSaxon.health < 0 ) {
-				saxons.splice(rdmSaxon);
-				console.log("Saxon is dead!!");
-			}else if (totalVikings == 0) {
-				vikings.splice(rdmViking);
+				console.log(this.saxons);
+				this.saxons.splice(rdmSaxon, 1);
+				console.log(this.saxons);
+				console.log(this.saxons.length);
+				console.log('hola');
+
+			}else if (rdmViking.health < 0) {
+				this.vikings.splice(rdmViking);
 			}
+			i++
 		}
 
-		if (totalVikings == 0) {
+		if (this.vikings.length == 0) {
 			console.log('Saxons won!!!!!!!!');
 		}
-		else if (totalSaxons == 0) {
+		else if (this.saxons.length == 0) {
 			console.log('Vikings won as predicted!!!');
 		}
 
@@ -87,8 +99,11 @@ var town = function(vikings, saxons, turns) {
 		// 		console.log("Saxon" + " punches with " + rdmSaxon.strength);
 		// 		console.log(rdmViking.name + "'s health: " + rdmViking.health);
 		// 		if (rdmSaxon.health < 0 ) {
+		// 			saxons.splice(rdmSaxon);
 		// 			console.log("Saxon is dead!!");
-
+		// 		}else if (rdmViking.health < 0) {
+		// 			vikings.splice(rdmViking);
+		// 			console.log(rdmViking + " is dead!!");
 		// 		}
 
 		// 	}else if (totalVikings == 0) {
@@ -96,10 +111,11 @@ var town = function(vikings, saxons, turns) {
 		// 	}else if (totalSaxons == 0) {
 		// 		console.log('Vikings won as predicted!!!');
 		// 	}
+		// }
 
 	}
 }
 
 
-var madrid = new town(vikings, saxons);
+var madrid = new town(vikings, my_saxons);
 madrid.assault();

@@ -6,7 +6,7 @@ function print (error, content) {
 	} else {
 		var result = averageColon(content);
 		fs.writeFile('results.txt', result, "utf8", function(){
-			console.log('Text saved in file')
+			console.log('Text saved in file');
 		});
 	}
 }

@@ -5,7 +5,7 @@ var Viking = function (name, health, strength) {
 }
 
 Viking.prototype.attack = function() {
-	var damage = (Math.floor(Math.random() * (this.strength-20)) + 20);
+	var damage = (Math.floor(Math.random() * (this.strength-10)) + 10);
 	return damage;
 
 }
